@@ -15,9 +15,6 @@
     --text: #e2e8f0;
     --text-secondary: #94a3b8;
     --accent: #60a5fa;
-    --danger: #ef4444;
-    --success: #10b981;
-    --warning: #f59e0b;
 }
 
 body {
@@ -56,19 +53,12 @@ h1 {
 /* Controls */
 .controls {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1rem;
     justify-content: center;
     align-items: center;
     animation: slideInBottom 0.5s ease;
-}
-
-.buttons-container {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 button {
@@ -95,56 +85,10 @@ button:active {
     transform: translateY(0);
 }
 
-#remove-shape-btn {
-    background-color: var(--danger);
-}
-
-#remove-shape-btn:hover {
-    background-color: #dc2626;
-}
-
-/* Dropdown for shape selection */
-.add-shape-container {
-    position: relative;
-}
-
-.shape-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    background-color: var(--surface);
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    margin-top: 0.5rem;
-    overflow: hidden;
-}
-
-.add-shape-container:hover .shape-dropdown {
-    display: flex;
-}
-
-.shape-option {
-    padding: 0.5rem 1rem;
-    border-radius: 0;
-    justify-content: flex-start;
-    background-color: transparent;
-}
-
-.shape-option:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: none;
-}
-
-/* Sliders */
 .sliders {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
-    justify-content: center;
 }
 
 .slider-container {
@@ -153,32 +97,10 @@ button:active {
     gap: 0.5rem;
 }
 
-.slider-input-group {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
 input[type="range"] {
     cursor: pointer;
     width: 150px;
     background-color: var(--surface);
-    accent-color: var(--primary);
-}
-
-input[type="number"] {
-    width: 70px;
-    background-color: var(--surface);
-    border: 1px solid var(--primary);
-    border-radius: 0.25rem;
-    color: var(--text);
-    padding: 0.25rem 0.5rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-input[type="number"]:focus {
-    outline: none;
-    border-color: var(--accent);
 }
 
 /* Main Content */
@@ -213,7 +135,6 @@ main {
     border-radius: 0.5rem;
     font-size: 0.9rem;
     color: var(--text-secondary);
-    z-index: 5;
 }
 
 .instructions p {
@@ -227,19 +148,6 @@ main {
     margin-bottom: 0;
 }
 
-.vector-display {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    background-color: rgba(30, 41, 59, 0.8);
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    z-index: 5;
-    display: none;
-}
-
 /* Footer */
 footer {
     padding: 1rem 0;
@@ -249,15 +157,15 @@ footer {
 }
 
 /* Particles and Physics Objects */
-.physics-object {
+.particle {
     transition: fill 0.3s ease;
 }
 
-.physics-object:hover {
+.particle:hover {
     cursor: pointer;
 }
 
-.physics-object.selected {
+.particle.selected {
     stroke: var(--accent);
     stroke-width: 2;
 }
@@ -266,12 +174,6 @@ footer {
     opacity: 0.5;
     stroke-width: 2;
     stroke-linecap: round;
-}
-
-.vector-indicator {
-    stroke-width: 2;
-    stroke: white;
-    stroke-dasharray: 5, 5;
 }
 
 /* Animations */

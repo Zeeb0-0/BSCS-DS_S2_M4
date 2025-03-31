@@ -12,40 +12,16 @@
         <header>
             <h1>Interactive Physics Engine</h1>
             <div class="controls">
-                <div class="buttons-container">
-                    <button id="reset-btn" title="Reset Simulation"><i class="fas fa-redo-alt"></i> Reset</button>
-                    <div class="add-shape-container">
-                        <button id="add-shape-btn" title="Add Shape"><i class="fas fa-plus-circle"></i> Add Shape</button>
-                        <div class="shape-dropdown">
-                            <button id="add-circle-btn" class="shape-option"><i class="fas fa-circle"></i> Circle</button>
-                            <button id="add-square-btn" class="shape-option"><i class="fas fa-square"></i> Square</button>
-                            <button id="add-triangle-btn" class="shape-option"><i class="fas fa-play fa-rotate-270"></i> Triangle</button>
-                            <button id="add-pentagon-btn" class="shape-option"><i class="fas fa-pentagon"></i> Pentagon</button>
-                        </div>
-                    </div>
-                    <button id="remove-shape-btn" title="Remove Selected Shape"><i class="fas fa-trash"></i> Remove</button>
-                </div>
+                <button id="reset-btn" title="Reset Simulation"><i class="fas fa-redo-alt"></i> Reset</button>
+                <button id="add-ball-btn" title="Add Ball"><i class="fas fa-plus-circle"></i> Add Ball</button>
                 <div class="sliders">
                     <div class="slider-container">
-                        <label for="gravity-slider">Gravity:</label>
-                        <div class="slider-input-group">
-                            <input type="range" id="gravity-slider" min="-20" max="20" step="0.1" value="9.8">
-                            <input type="number" id="gravity-input" value="9.8" step="0.1" min="-20" max="20">
-                        </div>
+                        <label for="gravity-slider">Gravity: <span id="gravity-value">9.8</span></label>
+                        <input type="range" id="gravity-slider" min="0" max="20" step="0.1" value="9.8">
                     </div>
                     <div class="slider-container">
-                        <label for="friction-slider">Friction:</label>
-                        <div class="slider-input-group">
-                            <input type="range" id="friction-slider" min="0" max="1" step="0.01" value="0.99">
-                            <input type="number" id="friction-input" value="0.99" step="0.01" min="0" max="1">
-                        </div>
-                    </div>
-                    <div class="slider-container">
-                        <label for="elasticity-slider">Elasticity:</label>
-                        <div class="slider-input-group">
-                            <input type="range" id="elasticity-slider" min="0" max="2" step="0.01" value="0.8">
-                            <input type="number" id="elasticity-input" value="0.8" step="0.01" min="0" max="2">
-                        </div>
+                        <label for="friction-slider">Friction: <span id="friction-value">0.99</span></label>
+                        <input type="range" id="friction-slider" min="0.8" max="1" step="0.01" value="0.99">
                     </div>
                 </div>
             </div>
@@ -54,46 +30,15 @@
             <div class="canvas-container">
                 <svg id="physics-canvas" width="100%" height="100%">
                     <!-- Physics objects will be drawn here -->
-                    <defs>
-                        <radialGradient id="gradient-blue" cx="0.5" cy="0.5" r="0.5" fx="0.25" fy="0.25">
-                            <stop offset="0%" stop-color="#60a5fa" stop-opacity="1" />
-                            <stop offset="100%" stop-color="#3b82f6" stop-opacity="1" />
-                        </radialGradient>
-                        <radialGradient id="gradient-purple" cx="0.5" cy="0.5" r="0.5" fx="0.25" fy="0.25">
-                            <stop offset="0%" stop-color="#a78bfa" stop-opacity="1" />
-                            <stop offset="100%" stop-color="#8b5cf6" stop-opacity="1" />
-                        </radialGradient>
-                        <radialGradient id="gradient-pink" cx="0.5" cy="0.5" r="0.5" fx="0.25" fy="0.25">
-                            <stop offset="0%" stop-color="#f472b6" stop-opacity="1" />
-                            <stop offset="100%" stop-color="#ec4899" stop-opacity="1" />
-                        </radialGradient>
-                        <radialGradient id="gradient-green" cx="0.5" cy="0.5" r="0.5" fx="0.25" fy="0.25">
-                            <stop offset="0%" stop-color="#34d399" stop-opacity="1" />
-                            <stop offset="100%" stop-color="#10b981" stop-opacity="1" />
-                        </radialGradient>
-                        <radialGradient id="gradient-yellow" cx="0.5" cy="0.5" r="0.5" fx="0.25" fy="0.25">
-                            <stop offset="0%" stop-color="#fbbf24" stop-opacity="1" />
-                            <stop offset="100%" stop-color="#f59e0b" stop-opacity="1" />
-                        </radialGradient>
-                        <radialGradient id="gradient-red" cx="0.5" cy="0.5" r="0.5" fx="0.25" fy="0.25">
-                            <stop offset="0%" stop-color="#f87171" stop-opacity="1" />
-                            <stop offset="100%" stop-color="#ef4444" stop-opacity="1" />
-                        </radialGradient>
-                    </defs>
                 </svg>
                 <div class="instructions">
-                    <p><i class="fas fa-mouse-pointer"></i> Click and drag to throw shapes</p>
-                    <p><i class="fas fa-hand-pointer"></i> Click on shapes to select them</p>
-                    <p><i class="fas fa-info-circle"></i> Use controls to adjust physics properties</p>
-                </div>
-                <div id="vector-display" class="vector-display">
-                    <div>Velocity: <span id="velocity-value">0, 0</span></div>
-                    <div>Momentum: <span id="momentum-value">0</span></div>
+                    <p><i class="fas fa-mouse-pointer"></i> Click and drag to throw particles</p>
+                    <p><i class="fas fa-hand-pointer"></i> Click on particles to select them</p>
                 </div>
             </div>
         </main>
         <footer>
-            <p>BSCS-DS_S2_M4 Physics Simulation | <span id="fps-counter">0 FPS</span> | <span id="particle-counter">0 Objects</span></p>
+            <p>BSCS-DS_S2_M4 Physics Simulation | <span id="fps-counter">0 FPS</span> | <span id="particle-counter">0 Particles</span></p>
         </footer>
     </div>
     <script src="app.js"></script>
