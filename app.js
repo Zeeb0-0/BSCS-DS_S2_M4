@@ -70,7 +70,7 @@ function init() {
     canvas.addEventListener('touchend', handleTouchEnd);
     
     // Add initial particles
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 1; i++) {
         addRandomParticle();
     }
     
@@ -447,7 +447,7 @@ function resetSimulation() {
     selectedParticle = null;
     
     // Add some new random particles
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 1; i++) {
         addRandomParticle();
     }
 }
